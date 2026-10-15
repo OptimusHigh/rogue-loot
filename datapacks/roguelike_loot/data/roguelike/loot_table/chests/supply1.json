@@ -58,6 +58,22 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:leather",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2.0,
+                "max": 5.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:bone",
           "weight": 10,
           "functions": [
@@ -99,6 +115,22 @@
                 "type": "minecraft:uniform",
                 "min": 2.0,
                 "max": 5.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:slime_ball",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2.0,
+                "max": 4.0
               },
               "add": false
             }

@@ -75,6 +75,27 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:music_disc_5",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:disc_fragment_5",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 3.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:music_disc_relic",
           "weight": 2
         },
@@ -85,13 +106,24 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:music_disc_precipice",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:goat_horn",
-          "weight": 8
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_instrument",
+              "options": "#minecraft:goat_horns"
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:echo_shard",
-          "weight": 4,
+          "weight": 5,
           "functions": [
             {
               "function": "minecraft:set_count",

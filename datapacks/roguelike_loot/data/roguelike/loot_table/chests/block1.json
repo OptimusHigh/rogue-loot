@@ -90,6 +90,22 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:chiseled_tuff",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4.0,
+                "max": 8.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:bookshelf",
           "weight": 8,
           "functions": [
@@ -167,6 +183,57 @@
               "add": false
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pale_oak_sapling",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 2.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:decorated_pot",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:burn_pottery_sherd",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:danger_pottery_sherd",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:friend_pottery_sherd",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:heart_pottery_sherd",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:heartbreak_pottery_sherd",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:sheaf_pottery_sherd",
+          "weight": 2
         }
       ]
     }

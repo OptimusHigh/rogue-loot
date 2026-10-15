@@ -11,7 +11,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_ingot",
-          "weight": 20,
+          "weight": 18,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -27,7 +27,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:gold_ingot",
-          "weight": 18,
+          "weight": 16,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -43,7 +43,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:lapis_lazuli",
-          "weight": 16,
+          "weight": 14,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -59,7 +59,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:redstone",
-          "weight": 16,
+          "weight": 14,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -75,7 +75,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald",
-          "weight": 14,
+          "weight": 12,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -91,7 +91,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:amethyst_shard",
-          "weight": 12,
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -106,8 +106,24 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:resin_clump",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2.0,
+                "max": 6.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:iron_block",
-          "weight": 5,
+          "weight": 4,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -120,6 +136,18 @@
           "type": "minecraft:item",
           "name": "minecraft:gold_block",
           "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1.0,
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald_block",
+          "weight": 2,
           "functions": [
             {
               "function": "minecraft:set_count",

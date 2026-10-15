@@ -166,6 +166,22 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:dragon_breath",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 2.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:potion",
           "weight": 8,
           "functions": [
@@ -232,6 +248,61 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:long_turtle_master"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:weaving"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:wind_charged"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:oozing"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:infested"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:splash_potion",
           "weight": 6,
           "functions": [
@@ -266,12 +337,20 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:ominous_bottle",
-          "weight": 3,
+          "weight": 4,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": 1.0,
               "add": false
+            },
+            {
+              "function": "minecraft:set_ominous_bottle_amplifier",
+              "amplifier": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 4.0
+              }
             }
           ]
         }

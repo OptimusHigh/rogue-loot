@@ -17,8 +17,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 3.0,
-                "max": 8.0
+                "min": 4.0,
+                "max": 10.0
               },
               "add": false
             }
@@ -58,17 +58,33 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:enchanted_book",
+          "name": "minecraft:wind_charge",
           "weight": 10,
           "functions": [
             {
-              "function": "minecraft:enchant_with_levels",
-              "levels": {
+              "function": "minecraft:set_count",
+              "count": {
                 "type": "minecraft:uniform",
-                "min": 20.0,
-                "max": 30.0
+                "min": 4.0,
+                "max": 8.0
               },
-              "options": "#minecraft:on_random_loot"
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:breeze_rod",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 2.0
+              },
+              "add": false
             }
           ]
         },
@@ -138,8 +154,24 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:ominous_bottle",
-          "weight": 4,
+          "name": "minecraft:trial_key",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 2.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ominous_trial_key",
+          "weight": 3,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -151,7 +183,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:echo_shard",
-          "weight": 3,
+          "weight": 4,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -161,6 +193,79 @@
                 "max": 2.0
               },
               "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ominous_bottle",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1.0,
+              "add": false
+            },
+            {
+              "function": "minecraft:set_ominous_bottle_amplifier",
+              "amplifier": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 20.0,
+                "max": 30.0
+              },
+              "options": "#minecraft:on_random_loot"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "minecraft:swift_sneak"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": [
+                "minecraft:density",
+                "minecraft:breach",
+                "minecraft:wind_burst"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "veinminer_enchantment:veinminer"
             }
           ]
         },

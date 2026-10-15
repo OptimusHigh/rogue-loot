@@ -11,7 +11,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_beef",
-          "weight": 18,
+          "weight": 16,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -27,7 +27,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_porkchop",
-          "weight": 18,
+          "weight": 16,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -76,6 +76,50 @@
           "type": "minecraft:item",
           "name": "minecraft:golden_apple",
           "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 2.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:sniffer_egg",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1.0,
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:torchflower_seeds",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 2.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pitcher_pod",
+          "weight": 3,
           "functions": [
             {
               "function": "minecraft:set_count",

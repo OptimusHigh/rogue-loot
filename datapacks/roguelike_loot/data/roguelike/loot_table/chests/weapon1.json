@@ -26,6 +26,22 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:iron_axe",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 5.0,
+                "max": 15.0
+              },
+              "options": "#minecraft:on_random_loot"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:bow",
           "weight": 10,
           "functions": [
@@ -64,7 +80,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:stone_sword",
-          "weight": 8,
+          "weight": 6,
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
@@ -106,6 +122,28 @@
                 "max": 10.0
               },
               "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:tipped_arrow",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:poison"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:tipped_arrow",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:weakness"
             }
           ]
         }
