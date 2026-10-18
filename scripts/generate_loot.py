@@ -419,7 +419,7 @@ def generate_all(output_dir=None):
                 "§8Заводская пломба на месте: невозможно изменить на наковальне.",
                 " ",
                 "§e✦ Свойство: §fСкручивает спавнеры монстров в инвентарь",
-                "§d★ Легендарный Ломбардный Хабар"
+
             ],
             {"minecraft:efficiency": 6, "minecraft:unbreaking": 5}
         ),
@@ -433,7 +433,7 @@ def generate_all(output_dir=None):
                 " ",
                 "§e✦ Свойство: §fМгновенная плавка руд прямо в забое",
                 "§e✦ Бонус: §fУмножает выплавленные слитки с учётом Удачи IV",
-                "§d★ Легендарный Ломбардный Хабар"
+
             ],
             {"minecraft:efficiency": 6, "minecraft:fortune": 4, "minecraft:unbreaking": 5}
         ),
@@ -446,9 +446,33 @@ def generate_all(output_dir=None):
                 "§8Заводская пломба на месте: невозможно изменить на наковальне.",
                 " ",
                 "§e✦ Свойство: §fМгновенная проходка тоннелей 3х3 блока",
-                "§d★ Легендарный Ломбардный Хабар"
             ],
             {"minecraft:efficiency": 6, "minecraft:unbreaking": 5}
+        ),
+        item_sealed_relic(
+            "minecraft:netherite_shovel", "excavator_shovel", "sealed_excavator_shovel", 7712,
+            "★ Запечатанный Экскаваторный Ковш",
+            [
+                "§5§l✦ ЗАПЕЧАТАННЫЙ ЛОМБАРДНЫЙ КУШ",
+                "§7Гидравлический ковш со стройки метрополитена.",
+                "§8Заводская пломба на месте: невозможно изменить на наковальне.",
+                " ",
+                "§e✦ Свойство: §fВыемка грунта 3х3 блока",
+            ],
+            {"minecraft:efficiency": 6, "minecraft:unbreaking": 5}
+        ),
+        item_sealed_relic(
+            "minecraft:fishing_rod", "poacher_harpoon", "sealed_poacher_harpoon", 7714,
+            "★ Запечатанный Титановый Гарпун",
+            [
+                "§5§l✦ ЗАПЕЧАТАННЫЙ ЛОМБАРДНЫЙ КУШ",
+                "§7Китобойный трос с усиленной электролебёдкой.",
+                "§8Заводская пломба на месте: невозможно изменить на наковальне.",
+                " ",
+                "§b✦ Свойство: §fМагнитная тяга лута со дна и земли",
+                "§b✦ Спецэффект: §fПодтягивает мобов в упор и сбивает щиты",
+            ],
+            {"minecraft:unbreaking": 5, "minecraft:lure": 3}
         )
     ])
 
@@ -486,7 +510,7 @@ def generate_all(output_dir=None):
         item_count("minecraft:heavy_core", 1, 1, 1),         # 26.3 Тяжелое ядро (джекпот!)
         # Запечатанные реликвии GanjaCraftCore
         item_sealed_relic(
-            "minecraft:netherite_sword", "executioner_sword", "sealed_executioner_blade", 7702,
+            "minecraft:netherite_sword", "executioner_blade", "sealed_executioner_blade", 7702,
             "★ Запечатанная Бандитская Заточка",
             [
                 "§5§l✦ ЗАПЕЧАТАННЫЙ ЛОМБАРДНЫЙ КУШ",
@@ -494,9 +518,45 @@ def generate_all(output_dir=None):
                 "§8Кровавая гравировка: невозможно изменить на наковальне.",
                 " ",
                 "§c✦ Свойство: §fУбойная сила и повышенный отжим лута",
-                "§d★ Легендарный Ломбардный Хабар"
             ],
             {"minecraft:sharpness": 6, "minecraft:looting": 4, "minecraft:unbreaking": 5}
+        ),
+        item_sealed_relic(
+            "minecraft:netherite_sword", "vampire_blade", "sealed_vampire_blade", 7706,
+            "★ Запечатанная Заточка с Кровотоком",
+            [
+                "§5§l✦ ЗАПЕЧАТАННЫЙ ЛОМБАРДНЫЙ КУШ",
+                "§7Лезвие впитало слишком много криминальных разборок.",
+                "§8Кровавая гравировка: невозможно изменить на наковальне.",
+                " ",
+                "§c✦ Свойство: §fВампиризм 35% и глубокое кровотечение",
+            ],
+            {"minecraft:sharpness": 6, "minecraft:looting": 4, "minecraft:unbreaking": 5}
+        ),
+        item_sealed_relic(
+            "minecraft:golden_sword", "thief_dagger", "sealed_thief_dagger", 7710,
+            "★ Запечатанная Заточка Вора-Авторитета",
+            [
+                "§5§l✦ ЗАПЕЧАТАННЫЙ ЛОМБАРДНЫЙ КУШ",
+                "§7Именное перо криминального авторитета из чистейшего золота.",
+                "§8Воровская метка: невозможно изменить на наковальне.",
+                " ",
+                "§e✦ Свойство: §fУдар в спину: x2.5 урона по мобам, кража 50-500 EMC у игроков",
+            ],
+            {"minecraft:sharpness": 6, "minecraft:looting": 4, "minecraft:unbreaking": 5}
+        ),
+        item_sealed_relic(
+            "minecraft:crossbow", "pipe_shotgun", "sealed_pipe_shotgun", 7724,
+            "★ Запечатанный Кустарный Дробовик 12К",
+            [
+                "§5§l✦ ЗАПЕЧАТАННЫЙ ЛОМБАРДНЫЙ КУШ",
+                "§7Тяжёлый гладкоствольный обрез с расточенным патронником.",
+                "§8Сварной шов: невозможно изменить на наковальне.",
+                " ",
+                "§c✦ Свойство: §fЗалп из 7 стрел веером за 1 патрон",
+                "§c✦ Убойная сила: §fКолоссальный урон картечью в упор",
+            ],
+            {"minecraft:quick_charge": 3, "minecraft:piercing": 4, "minecraft:unbreaking": 5}
         ),
         item_sealed_relic(
             "minecraft:mace", "demolition_mace", "sealed_demolition_mace", 7708,
@@ -508,7 +568,6 @@ def generate_all(output_dir=None):
                 " ",
                 "§e✦ Свойство: §fУдар с прыжка раскидывает врагов волной ветра",
                 "§e✦ Спецэффект: §fОглушение, слабость и замедление в радиусе 5 блоков",
-                "§d★ Легендарный Ломбардный Хабар"
             ],
             {"minecraft:unbreaking": 5, "minecraft:density": 5, "minecraft:breach": 4}
         ),
@@ -521,7 +580,6 @@ def generate_all(output_dir=None):
                 "§8Кустарная резьба: невозможно изменить на наковальне.",
                 " ",
                 "§b✦ Свойство: §fБесконечные зажигательные залпы",
-                "§d★ Легендарный Ломбардный Хабар"
             ],
             {"minecraft:power": 6, "minecraft:flame": 1, "minecraft:infinity": 1, "minecraft:unbreaking": 4}
         ),
@@ -534,7 +592,6 @@ def generate_all(output_dir=None):
                 "§8Заварен наглухо: невозможно изменить на наковальне.",
                 " ",
                 "§6✦ Свойство: §fНепробиваемая чугунная защита",
-                "§d★ Легендарный Ломбардный Хабар"
             ],
             {"minecraft:unbreaking": 5}
         )
@@ -611,7 +668,7 @@ def generate_all(output_dir=None):
                 " ",
                 "§e✦ Свойство: §fНочное зрение и иммунитет к темноте",
                 "§e✦ Тепловизор: §fПодсвечивает монстров вокруг сквозь стены",
-                "§d★ Легендарный Ломбардный Хабар"
+
             ],
             {"minecraft:protection": 5, "minecraft:unbreaking": 5, "minecraft:respiration": 3}
         ),
@@ -624,7 +681,7 @@ def generate_all(output_dir=None):
                 "§8Заводская пломба на месте: невозможно изменить на наковальне.",
                 " ",
                 "§a✦ Свойство: §fКолоссальная броня (+10) и анти-отдача",
-                "§d★ Легендарный Ломбардный Хабар"
+
             ],
             {"minecraft:protection": 5, "minecraft:unbreaking": 5}
         ),
@@ -638,7 +695,7 @@ def generate_all(output_dir=None):
                 " ",
                 "§a✦ Свойство: §fБег в горку без прыжков (+0.5 блока шага)",
                 "§a✦ Второе дыхание: §fПри HP < 30% даёт Спешку II и Скорость III",
-                "§d★ Легендарный Ломбардный Хабар"
+
             ],
             {"minecraft:protection": 5, "minecraft:unbreaking": 5}
         ),
@@ -652,7 +709,7 @@ def generate_all(output_dir=None):
                 " ",
                 "§b✦ Свойство: §fНулевой урон от падений с любой высоты",
                 "§b✦ Мобильность: §fСвободный бег в воде и по рыхлому снегу",
-                "§d★ Легендарный Ломбардный Хабар"
+
             ],
             {"minecraft:feather_falling": 5, "minecraft:depth_strider": 3, "minecraft:unbreaking": 5}
         )
