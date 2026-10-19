@@ -189,7 +189,7 @@ def pool_common_gear_t1(rolls_min=2, rolls_max=4):
         item_count("minecraft:torch", 16, 16, 32),
         item_count("minecraft:lantern", 12, 2, 6),
         item_count("minecraft:copper_bulb", 8, 1, 3),
-        item_count("minecraft:chain", 10, 3, 8),
+        item_count("minecraft:iron_chain", 10, 3, 8),
         item_count("minecraft:bread", 12, 4, 10),
         item_count("minecraft:baked_potato", 10, 4, 10),
         item_count("minecraft:arrow", 14, 16, 32),
@@ -207,7 +207,7 @@ def pool_common_gear_t2(rolls_min=3, rolls_max=5):
         item_count("minecraft:lantern", 12, 3, 8),
         item_count("minecraft:soul_lantern", 12, 2, 6),
         item_count("minecraft:copper_bulb", 10, 2, 5),
-        item_count("minecraft:chain", 10, 6, 14),
+        item_count("minecraft:iron_chain", 10, 6, 14),
         item_count("minecraft:golden_carrot", 10, 4, 10),
         item_count("minecraft:golden_apple", 4, 1, 2),
         item_count("minecraft:wind_charge", 10, 6, 16),
@@ -374,7 +374,7 @@ def generate_all(output_dir=None):
     write_table(output_dir, "block1.json", [
         make_pool(3, 5, [
             item_count("minecraft:lantern", 14, 4, 10),
-            item_count("minecraft:chain", 14, 6, 14),
+            item_count("minecraft:iron_chain", 14, 6, 14),
             item_count("minecraft:copper_bulb", 12, 2, 6),
             item_count("minecraft:copper_grate", 12, 4, 12),
             item_count("minecraft:chiseled_stone_bricks", 10, 6, 14),
