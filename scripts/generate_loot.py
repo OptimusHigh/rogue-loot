@@ -99,39 +99,63 @@ def item_enchant_random(weight, options):
         ]
     }
 
-def item_potion(name, weight, potion_id):
+def item_potion(name, weight, potion_id, min_c=1, max_c=1):
+    funcs = [
+        {
+            "function": "minecraft:set_potion",
+            "id": potion_id
+        }
+    ]
+    if min_c == max_c == 1:
+        pass
+    else:
+        funcs.append({
+            "function": "minecraft:set_count",
+            "count": {
+                "type": "minecraft:uniform",
+                "min": float(min_c),
+                "max": float(max_c)
+            },
+            "add": False
+        })
     return {
         "type": "minecraft:item",
         "name": name,
         "weight": weight,
-        "functions": [
-            {
-                "function": "minecraft:set_potion",
-                "id": potion_id
-            }
-        ]
+        "functions": funcs
     }
 
-def item_ominous_bottle(weight, min_amp=1, max_amp=5):
+def item_ominous_bottle(weight, min_amp=1, max_amp=5, min_c=1, max_c=3):
+    funcs = []
+    if min_c == max_c == 1:
+        funcs.append({
+            "function": "minecraft:set_count",
+            "count": 1.0,
+            "add": False
+        })
+    else:
+        funcs.append({
+            "function": "minecraft:set_count",
+            "count": {
+                "type": "minecraft:uniform",
+                "min": float(min_c),
+                "max": float(max_c)
+            },
+            "add": False
+        })
+    funcs.append({
+        "function": "minecraft:set_ominous_bottle_amplifier",
+        "amplifier": {
+            "type": "minecraft:uniform",
+            "min": float(min_amp),
+            "max": float(max_amp)
+        }
+    })
     return {
         "type": "minecraft:item",
         "name": "minecraft:ominous_bottle",
         "weight": weight,
-        "functions": [
-            {
-                "function": "minecraft:set_count",
-                "count": 1.0,
-                "add": False
-            },
-            {
-                "function": "minecraft:set_ominous_bottle_amplifier",
-                "amplifier": {
-                    "type": "minecraft:uniform",
-                    "min": float(min_amp),
-                    "max": float(max_amp)
-                }
-            }
-        ]
+        "functions": funcs
     }
 
 def item_goat_horn(weight):
@@ -188,7 +212,7 @@ def pool_common_gear_t1(rolls_min=2, rolls_max=4):
     return make_pool(rolls_min, rolls_max, [
         item_count("minecraft:torch", 16, 16, 32),
         item_count("minecraft:lantern", 12, 2, 6),
-        item_count("minecraft:copper_bulb", 8, 1, 3),
+        item_count("minecraft:copper_bulb", 8, 2, 6),
         item_count("minecraft:iron_chain", 10, 3, 8),
         item_count("minecraft:bread", 12, 4, 10),
         item_count("minecraft:baked_potato", 10, 4, 10),
@@ -209,7 +233,7 @@ def pool_common_gear_t2(rolls_min=3, rolls_max=5):
         item_count("minecraft:copper_bulb", 10, 2, 5),
         item_count("minecraft:iron_chain", 10, 6, 14),
         item_count("minecraft:golden_carrot", 10, 4, 10),
-        item_count("minecraft:golden_apple", 4, 1, 2),
+        item_count("minecraft:golden_apple", 4, 2, 5),
         item_count("minecraft:wind_charge", 10, 6, 16),
         item_count("minecraft:spectral_arrow", 12, 8, 18),
         item_count("minecraft:arrow", 12, 16, 32),
@@ -228,7 +252,7 @@ def pool_common_mob_drops_t1(rolls_min=2, rolls_max=4):
         item_count("minecraft:feather", 12, 6, 16),
         item_count("minecraft:leather", 10, 3, 8),
         item_count("minecraft:rabbit_hide", 8, 3, 8),
-        item_count("minecraft:rabbit_foot", 4, 1, 2),
+        item_count("minecraft:rabbit_foot", 4, 2, 5),
         item_count("minecraft:glow_ink_sac", 8, 2, 6),
         item_count("minecraft:ink_sac", 8, 4, 10),
         item_count("minecraft:honeycomb", 6, 2, 6),
@@ -247,14 +271,14 @@ def pool_common_mob_drops_t2(rolls_min=3, rolls_max=5):
         item_count("minecraft:blaze_rod", 10, 3, 8),
         item_count("minecraft:blaze_powder", 12, 4, 10),
         item_count("minecraft:magma_cream", 10, 3, 8),
-        item_count("minecraft:ghast_tear", 6, 1, 3),
+        item_count("minecraft:ghast_tear", 6, 2, 5),
         item_count("minecraft:resin_clump", 10, 3, 8),
         item_count("minecraft:phantom_membrane", 8, 2, 5),
         item_count("minecraft:glow_ink_sac", 8, 3, 8),
         item_count("minecraft:prismarine_shard", 8, 4, 10),
         item_count("minecraft:prismarine_crystals", 6, 3, 8),
         item_count("minecraft:glowstone_dust", 10, 6, 16),
-        item_count("minecraft:echo_shard", 4, 1, 2)
+        item_count("minecraft:echo_shard", 4, 2, 5)
     ])
 
 def pool_common_minerals_t1(rolls_min=2, rolls_max=4):
@@ -264,7 +288,7 @@ def pool_common_minerals_t1(rolls_min=2, rolls_max=4):
         item_count("minecraft:gold_nugget", 12, 8, 20),
         item_count("minecraft:copper_ingot", 14, 4, 12),
         item_count("minecraft:iron_ingot", 12, 2, 6),
-        item_count("minecraft:gold_ingot", 8, 1, 4),
+        item_count("minecraft:gold_ingot", 8, 2, 6),
         item_count("minecraft:lapis_lazuli", 10, 6, 16),
         item_count("minecraft:redstone", 10, 6, 18),
         item_count("minecraft:coal", 14, 10, 24),
@@ -276,7 +300,7 @@ def pool_common_minerals_t1(rolls_min=2, rolls_max=4):
 def pool_common_minerals_t2(rolls_min=2, rolls_max=4):
     """Драгоценные металлы, алмазы и самоцветы глубин (Этажи 4-5)"""
     return make_pool(rolls_min, rolls_max, [
-        item_count("minecraft:diamond", 6, 1, 3),
+        item_count("minecraft:diamond", 6, 2, 5),
         item_count("minecraft:emerald", 10, 2, 6),
         item_count("minecraft:gold_ingot", 12, 4, 12),
         item_count("minecraft:iron_ingot", 12, 6, 14),
@@ -315,8 +339,8 @@ def generate_all(output_dir=None):
             item_enchant("minecraft:iron_pickaxe", 8, 10, 18),
             item_simple("minecraft:shield", 10),
             item_simple("minecraft:brush", 6),
-            item_simple("minecraft:compass", 6),
-            item_simple("minecraft:clock", 6)
+            item_count("minecraft:compass", 6, 1, 3),
+            item_count("minecraft:clock", 6, 1, 3)
         ]),
         pool_common_gear_t1(3, 5),
         pool_common_mob_drops_t1(2, 4),
@@ -358,10 +382,10 @@ def generate_all(output_dir=None):
             item_count("minecraft:redstone", 14, 12, 28),
             item_count("minecraft:amethyst_shard", 10, 6, 16),
             item_count("minecraft:resin_clump", 10, 4, 10),
-            item_count("minecraft:iron_block", 5, 1, 2),
-            item_count("minecraft:gold_block", 4, 1, 2),
-            item_count("minecraft:emerald_block", 3, 1, 2),
-            item_count("minecraft:echo_shard", 4, 1, 3)
+            item_count("minecraft:iron_block", 5, 1, 3),
+            item_count("minecraft:gold_block", 4, 1, 3),
+            item_count("minecraft:emerald_block", 3, 1, 3),
+            item_count("minecraft:echo_shard", 4, 2, 5)
         ]),
         pool_common_gear_t2(3, 5),
         pool_common_mob_drops_t2(3, 5),
@@ -385,13 +409,13 @@ def generate_all(output_dir=None):
             item_count("minecraft:tinted_glass", 6, 3, 8),
             item_count("minecraft:flower_pot", 6, 2, 4),
             item_count("minecraft:pale_oak_sapling", 6, 2, 5),
-            item_simple("minecraft:decorated_pot", 4),
-            item_simple("minecraft:burn_pottery_sherd", 3),
-            item_simple("minecraft:danger_pottery_sherd", 3),
-            item_simple("minecraft:friend_pottery_sherd", 3),
-            item_simple("minecraft:heart_pottery_sherd", 3),
-            item_simple("minecraft:heartbreak_pottery_sherd", 3),
-            item_simple("minecraft:sheaf_pottery_sherd", 3)
+            item_count("minecraft:decorated_pot", 4, 1, 3),
+            item_count("minecraft:burn_pottery_sherd", 3, 1, 4),
+            item_count("minecraft:danger_pottery_sherd", 3, 1, 4),
+            item_count("minecraft:friend_pottery_sherd", 3, 1, 4),
+            item_count("minecraft:heart_pottery_sherd", 3, 1, 4),
+            item_count("minecraft:heartbreak_pottery_sherd", 3, 1, 4),
+            item_count("minecraft:sheaf_pottery_sherd", 3, 1, 4)
         ]),
         pool_common_gear_t1(2, 4),
         pool_common_mob_drops_t1(2, 4),
@@ -412,13 +436,13 @@ def generate_all(output_dir=None):
             item_count("minecraft:magma_block", 8, 4, 10),
             item_count("minecraft:resin_bricks", 8, 6, 16),
             item_count("minecraft:chiseled_resin_bricks", 6, 4, 10),
-            item_count("minecraft:sculk_catalyst", 4, 1, 2),
-            item_count("minecraft:sculk_sensor", 4, 1, 2),
-            item_count("minecraft:crafter", 4, 1, 2),
-            item_count("minecraft:ender_chest", 3, 1, 2),
-            item_count("minecraft:lodestone", 2, 1, 1),
-            item_count("minecraft:respawn_anchor", 2, 1, 1),
-            item_count("minecraft:creaking_heart", 2, 1, 1)
+            item_count("minecraft:sculk_catalyst", 4, 1, 3),
+            item_count("minecraft:sculk_sensor", 4, 1, 3),
+            item_count("minecraft:crafter", 4, 1, 3),
+            item_count("minecraft:ender_chest", 3, 1, 3),
+            item_count("minecraft:lodestone", 2, 1, 2),
+            item_count("minecraft:respawn_anchor", 2, 1, 2),
+            item_count("minecraft:creaking_heart", 2, 1, 2)
         ]),
         pool_common_gear_t2(3, 5),
         pool_common_mob_drops_t2(3, 5),
@@ -443,7 +467,7 @@ def generate_all(output_dir=None):
             item_count("minecraft:honey_bottle", 8, 2, 5),
             item_count("minecraft:melon_seeds", 6, 4, 10),
             item_count("minecraft:pumpkin_seeds", 6, 4, 10),
-            item_count("minecraft:golden_apple", 3, 1, 2),
+            item_count("minecraft:golden_apple", 3, 1, 3),
             item_count("minecraft:egg", 10, 6, 16)
         ]),
         pool_common_gear_t1(2, 4),
@@ -457,17 +481,17 @@ def generate_all(output_dir=None):
     write_table(output_dir, "food2.json", [
         make_pool(3, 5, [
             item_count("minecraft:golden_carrot", 16, 6, 16),
-            item_count("minecraft:golden_apple", 8, 2, 5),
+            item_count("minecraft:golden_apple", 8, 2, 6),
             item_count("minecraft:cooked_beef", 14, 8, 18),
             item_count("minecraft:cooked_porkchop", 14, 8, 18),
             item_count("minecraft:glistering_melon_slice", 10, 4, 10),
             item_count("minecraft:honey_bottle", 10, 4, 8),
-            item_count("minecraft:sniffer_egg", 3, 1, 2),
-            item_count("minecraft:turtle_egg", 4, 1, 3),
-            item_count("minecraft:torchflower_seeds", 4, 2, 5),
-            item_count("minecraft:pitcher_pod", 4, 2, 5),
+            item_count("minecraft:sniffer_egg", 3, 1, 3),
+            item_count("minecraft:turtle_egg", 4, 2, 6),
+            item_count("minecraft:torchflower_seeds", 4, 2, 6),
+            item_count("minecraft:pitcher_pod", 4, 2, 6),
             item_count("minecraft:popped_chorus_fruit", 8, 6, 14),
-            item_count("minecraft:enchanted_golden_apple", 1, 1, 1)
+            item_count("minecraft:enchanted_golden_apple", 1, 1, 2)
         ]),
         pool_common_gear_t2(3, 5),
         pool_common_mob_drops_t2(3, 5),
@@ -479,17 +503,17 @@ def generate_all(output_dir=None):
     # =========================================================================
     write_table(output_dir, "supply1.json", [
         make_pool(3, 5, [
-            item_count("minecraft:saddle", 8, 1, 2),
-            item_count("minecraft:minecart", 8, 1, 2),
-            item_count("minecraft:bundle", 10, 1, 2),
-            item_count("minecraft:lead", 8, 2, 4),
-            item_count("minecraft:name_tag", 8, 2, 4),
-            item_simple("minecraft:compass", 6),
-            item_simple("minecraft:clock", 6),
+            item_count("minecraft:saddle", 8, 1, 1),
+            item_count("minecraft:minecart", 8, 1, 1),
+            item_count("minecraft:bundle", 10, 1, 1),
+            item_count("minecraft:lead", 8, 2, 6),
+            item_count("minecraft:name_tag", 8, 2, 6),
+            item_count("minecraft:compass", 6, 1, 3),
+            item_count("minecraft:clock", 6, 1, 3),
             item_simple("minecraft:spyglass", 6),
-            item_count("minecraft:flint_and_steel", 8, 1, 2),
-            item_count("minecraft:shears", 8, 1, 2),
-            item_count("minecraft:brush", 8, 1, 2),
+            item_count("minecraft:flint_and_steel", 8, 1, 1),
+            item_count("minecraft:shears", 8, 1, 1),
+            item_count("minecraft:brush", 8, 1, 1),
             item_count("minecraft:snowball", 10, 12, 24)
         ]),
         pool_common_gear_t1(3, 5),
@@ -502,15 +526,15 @@ def generate_all(output_dir=None):
     # =========================================================================
     write_table(output_dir, "supply2.json", [
         make_pool(3, 5, [
-            item_count("minecraft:trial_key", 8, 1, 3),
-            item_count("minecraft:ominous_trial_key", 4, 1, 2),
-            item_ominous_bottle(6, 1, 4),
+            item_count("minecraft:trial_key", 8, 2, 5),
+            item_count("minecraft:ominous_trial_key", 4, 1, 3),
+            item_ominous_bottle(6, 1, 4, 1, 3),
             item_count("minecraft:totem_of_undying", 2, 1, 1),
-            item_count("minecraft:saddle", 6, 1, 2),
-            item_count("minecraft:bundle", 8, 1, 2),
+            item_count("minecraft:saddle", 6, 1, 1),
+            item_count("minecraft:bundle", 8, 1, 1),
             item_count("minecraft:wind_charge", 12, 8, 20),
             item_count("minecraft:spectral_arrow", 12, 12, 24),
-            item_count("minecraft:echo_shard", 5, 1, 3),
+            item_count("minecraft:echo_shard", 5, 2, 5),
             item_enchant_random(4, "veinminer_enchantment:veinminer"),
             item_enchant_random(4, "minecraft:swift_sneak"),
             item_enchant_random(4, "minecraft:mending"),
@@ -539,10 +563,10 @@ def generate_all(output_dir=None):
             item_simple("minecraft:flint_and_steel", 8),
             item_simple("minecraft:shears", 8),
             item_simple("minecraft:brush", 8),
-            item_simple("minecraft:compass", 6),
-            item_simple("minecraft:clock", 6),
-            item_count("minecraft:lead", 6, 2, 4),
-            item_count("minecraft:name_tag", 6, 2, 4)
+            item_count("minecraft:compass", 6, 1, 3),
+            item_count("minecraft:clock", 6, 1, 3),
+            item_count("minecraft:lead", 6, 2, 6),
+            item_count("minecraft:name_tag", 6, 2, 6)
         ]),
         pool_common_gear_t1(2, 4),
         pool_common_mob_drops_t1(2, 4),
@@ -559,10 +583,10 @@ def generate_all(output_dir=None):
             item_enchant("minecraft:diamond_shovel", 8, 25, 35),
             item_enchant("minecraft:diamond_hoe", 5, 20, 30),
             item_enchant("minecraft:iron_pickaxe", 8, 25, 35),
-            item_simple("minecraft:recovery_compass", 4),
+            item_count("minecraft:recovery_compass", 4, 1, 2),
             item_simple("minecraft:spyglass", 6),
-            item_count("minecraft:name_tag", 8, 2, 5),
-            item_count("minecraft:lead", 8, 2, 5),
+            item_count("minecraft:name_tag", 8, 2, 6),
+            item_count("minecraft:lead", 8, 2, 6),
             item_enchant_random(4, "veinminer_enchantment:veinminer"),
             # Запечатанные реликвии GanjaCraftCore (Алмазная основа)
             item_sealed_relic(
@@ -645,9 +669,9 @@ def generate_all(output_dir=None):
             item_enchant("minecraft:crossbow", 10, 15, 25),
             item_enchant("minecraft:shield", 8, 15, 25),
             item_count("minecraft:spectral_arrow", 10, 6, 16),
-            item_potion("minecraft:tipped_arrow", 8, "minecraft:poison"),
-            item_potion("minecraft:tipped_arrow", 8, "minecraft:weakness"),
-            item_potion("minecraft:tipped_arrow", 8, "minecraft:slowness")
+            item_potion("minecraft:tipped_arrow", 8, "minecraft:poison", 3, 8),
+            item_potion("minecraft:tipped_arrow", 8, "minecraft:weakness", 3, 8),
+            item_potion("minecraft:tipped_arrow", 8, "minecraft:slowness", 3, 8)
         ]),
         pool_common_gear_t1(3, 5),
         pool_common_mob_drops_t1(2, 4),
@@ -655,7 +679,7 @@ def generate_all(output_dir=None):
     ])
 
     # =========================================================================
-    # 13. WEAPON2 (Этажи 4-5) - HEAVY CORE, MACE, РЕЛИКВИИ, АЛМАЗЫ
+    # 13. WEAPON2 (Этажи 4-5) - HEAVY CORE, РЕЛИКВИИ, АЛМАЗЫ (БУЛАВА ИСКЛЮЧЕНА)
     # =========================================================================
     write_table(output_dir, "weapon2.json", [
         make_pool(2, 4, [
@@ -663,14 +687,13 @@ def generate_all(output_dir=None):
             item_enchant("minecraft:diamond_axe", 8, 25, 35),
             item_enchant("minecraft:bow", 10, 25, 35),
             item_enchant("minecraft:crossbow", 10, 25, 35),
-            item_enchant("minecraft:mace", 4, 25, 35),
             item_enchant("minecraft:trident", 3, 25, 35),
             item_enchant("minecraft:shield", 8, 20, 30),
-            item_count("minecraft:heavy_core", 1, 1, 1),
+            item_count("minecraft:heavy_core", 1, 1, 2),
             item_count("minecraft:totem_of_undying", 2, 1, 1),
-            item_potion("minecraft:tipped_arrow", 8, "minecraft:strong_healing"),
-            item_potion("minecraft:tipped_arrow", 8, "minecraft:strong_harming"),
-            item_potion("minecraft:tipped_arrow", 8, "minecraft:long_slowness"),
+            item_potion("minecraft:tipped_arrow", 8, "minecraft:strong_healing", 3, 8),
+            item_potion("minecraft:tipped_arrow", 8, "minecraft:strong_harming", 3, 8),
+            item_potion("minecraft:tipped_arrow", 8, "minecraft:long_slowness", 3, 8),
             # Запечатанные реликвии GanjaCraftCore (Алмазная / специальная основа)
             item_sealed_relic(
                 "minecraft:diamond_sword", "executioner_blade", "sealed_executioner_blade", 7702,
@@ -722,19 +745,6 @@ def generate_all(output_dir=None):
                 {"minecraft:quick_charge": 3, "minecraft:piercing": 4, "minecraft:unbreaking": 5}
             ),
             item_sealed_relic(
-                "minecraft:mace", "demolition_mace", "sealed_demolition_mace", 7708,
-                "★ Запечатанный Отбойный Молот Сноса",
-                [
-                    "§5§l✦ ЗАПЕЧАТАННЫЙ ЛОМБАРДНЫЙ КУШ",
-                    "§7Инструмент бригады сноса аварийных многоэтажек.",
-                    "§8Заводская пломба на месте: невозможно изменить на наковальне.",
-                    " ",
-                    "§e✦ Свойство: §fУдар с прыжка раскидывает врагов волной ветра",
-                    "§e✦ Спецэффект: §fОглушение, слабость и замедление в радиусе 5 блоков",
-                ],
-                {"minecraft:unbreaking": 5, "minecraft:density": 5, "minecraft:breach": 4}
-            ),
-            item_sealed_relic(
                 "minecraft:bow", "ancestral_bow", "sealed_ancestral_bow", 7703,
                 "★ Запечатанный Самопал из Трубы",
                 [
@@ -781,12 +791,12 @@ def generate_all(output_dir=None):
             item_enchant("minecraft:golden_chestplate", 6, 20, 30),
             item_enchant("minecraft:golden_boots", 6, 20, 30),
             # Шаблоны отделки брони 1-3 этажей
-            item_count("minecraft:sentry_armor_trim_smithing_template", 3, 1, 1),
-            item_count("minecraft:dune_armor_trim_smithing_template", 3, 1, 1),
-            item_count("minecraft:coast_armor_trim_smithing_template", 3, 1, 1),
-            item_count("minecraft:wild_armor_trim_smithing_template", 3, 1, 1),
-            item_count("minecraft:wayfinder_armor_trim_smithing_template", 3, 1, 1),
-            item_count("minecraft:raiser_armor_trim_smithing_template", 3, 1, 1)
+            item_count("minecraft:sentry_armor_trim_smithing_template", 3, 1, 3),
+            item_count("minecraft:dune_armor_trim_smithing_template", 3, 1, 3),
+            item_count("minecraft:coast_armor_trim_smithing_template", 3, 1, 3),
+            item_count("minecraft:wild_armor_trim_smithing_template", 3, 1, 3),
+            item_count("minecraft:wayfinder_armor_trim_smithing_template", 3, 1, 3),
+            item_count("minecraft:raiser_armor_trim_smithing_template", 3, 1, 3)
         ]),
         pool_common_gear_t1(3, 5),
         pool_common_mob_drops_t1(2, 4),
@@ -807,29 +817,29 @@ def generate_all(output_dir=None):
             item_enchant("minecraft:shield", 8, 20, 30),
             item_count("minecraft:totem_of_undying", 2, 1, 1),
             # ПОЛНЫЙ НАБОР 18 ШАБЛОНОВ ОТДЕЛКИ (TRIMS)
-            item_count("minecraft:sentry_armor_trim_smithing_template", 2, 1, 1),
-            item_count("minecraft:dune_armor_trim_smithing_template", 2, 1, 1),
-            item_count("minecraft:coast_armor_trim_smithing_template", 2, 1, 1),
-            item_count("minecraft:wild_armor_trim_smithing_template", 2, 1, 1),
-            item_count("minecraft:wayfinder_armor_trim_smithing_template", 2, 1, 1),
-            item_count("minecraft:raiser_armor_trim_smithing_template", 2, 1, 1),
-            item_count("minecraft:shaper_armor_trim_smithing_template", 2, 1, 1),
-            item_count("minecraft:host_armor_trim_smithing_template", 2, 1, 1),
-            item_count("minecraft:vex_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:eye_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:ward_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:rib_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:spire_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:snout_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:tide_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:flow_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:bolt_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:silence_armor_trim_smithing_template", 1, 1, 1),
-            item_count("minecraft:netherite_upgrade_smithing_template", 1, 1, 1),
+            item_count("minecraft:sentry_armor_trim_smithing_template", 2, 1, 3),
+            item_count("minecraft:dune_armor_trim_smithing_template", 2, 1, 3),
+            item_count("minecraft:coast_armor_trim_smithing_template", 2, 1, 3),
+            item_count("minecraft:wild_armor_trim_smithing_template", 2, 1, 3),
+            item_count("minecraft:wayfinder_armor_trim_smithing_template", 2, 1, 3),
+            item_count("minecraft:raiser_armor_trim_smithing_template", 2, 1, 3),
+            item_count("minecraft:shaper_armor_trim_smithing_template", 2, 1, 3),
+            item_count("minecraft:host_armor_trim_smithing_template", 2, 1, 3),
+            item_count("minecraft:vex_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:eye_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:ward_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:rib_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:spire_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:snout_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:tide_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:flow_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:bolt_armor_trim_smithing_template", 1, 1, 3),
+            item_count("minecraft:silence_armor_trim_smithing_template", 1, 1, 2),
+            item_count("minecraft:netherite_upgrade_smithing_template", 1, 1, 2),
             # Узоры флагов
-            item_simple("minecraft:flow_banner_pattern", 1),
-            item_simple("minecraft:guster_banner_pattern", 1),
-            item_simple("minecraft:piglin_banner_pattern", 1),
+            item_count("minecraft:flow_banner_pattern", 1, 1, 2),
+            item_count("minecraft:guster_banner_pattern", 1, 1, 2),
+            item_count("minecraft:piglin_banner_pattern", 1, 1, 2),
             # Запечатанные реликвии GanjaCraftCore (Алмазная основа)
             item_sealed_relic(
                 "minecraft:turtle_helmet", "welding_mask", "sealed_welding_mask", 7716,
@@ -910,7 +920,7 @@ def generate_all(output_dir=None):
             item_count("minecraft:sugar", 12, 8, 20),
             item_count("minecraft:glowstone_dust", 12, 8, 20),
             item_count("minecraft:redstone", 12, 8, 20),
-            item_ominous_bottle(6, 1, 5),
+            item_ominous_bottle(6, 1, 5, 1, 3),
             # Готовые зелья
             item_potion("minecraft:potion", 8, "minecraft:strong_healing"),
             item_potion("minecraft:potion", 8, "minecraft:long_regeneration"),
@@ -959,9 +969,9 @@ def generate_all(output_dir=None):
             item_count("minecraft:echo_shard", 6, 2, 5),
             item_count("minecraft:amethyst_shard", 10, 6, 16),
             item_count("minecraft:nautilus_shell", 6, 2, 5),
-            item_count("minecraft:heart_of_the_sea", 2, 1, 1),
+            item_count("minecraft:heart_of_the_sea", 2, 1, 2),
             item_count("minecraft:totem_of_undying", 2, 1, 1),
-            item_count("minecraft:nether_star", 1, 1, 1) # Ультраредкий джекпот
+            item_count("minecraft:nether_star", 1, 1, 2) # Ультраредкий джекпот
         ]),
         pool_common_gear_t2(2, 4),
         pool_common_mob_drops_t2(3, 5),

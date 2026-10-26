@@ -101,12 +101,34 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:compass",
-          "weight": 6
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 3.0
+              },
+              "add": false
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:clock",
-          "weight": 6
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 3.0
+              },
+              "add": false
+            }
+          ]
         },
         {
           "type": "minecraft:item",
@@ -118,7 +140,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 2.0,
-                "max": 4.0
+                "max": 6.0
               },
               "add": false
             }
@@ -134,7 +156,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 2.0,
-                "max": 4.0
+                "max": 6.0
               },
               "add": false
             }
@@ -190,8 +212,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 3.0
+                "min": 2.0,
+                "max": 6.0
               },
               "add": false
             }
@@ -479,8 +501,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 2.0
+                "min": 2.0,
+                "max": 5.0
               },
               "add": false
             }
@@ -648,8 +670,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 4.0
+                "min": 2.0,
+                "max": 6.0
               },
               "add": false
             }
